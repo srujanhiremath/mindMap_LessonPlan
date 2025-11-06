@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skillschoolz Flexible Chain</title>
+  <link rel="stylesheet" href="chain.css">
+</head>
+<body>
+  <header class="toolbar">
+    <div class="left">
+      <button id="add-node" title="Add Node (Enter)">+ Add Node</button>
+      <button id="delete-node" title="Delete (Del)">Delete</button>
+      <button id="toggle-node" title="Collapse/Expand Chain (Space)">Toggle</button>
+      <button id="center-view" title="Center View">Center</button>
+    </div>
+    <div class="right">
+      <label>
+        <select id="theme-select">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+          <option value="sepia">Sepia</option>
+        </select>
+      </label>
+      <button id="new-map" title="New Map">New</button>
+      <button id="export-json" title="Export JSON">Export</button>
+      <input type="file" id="import-json" accept="application/json" style="display:none">
+      <button id="import-json-btn" title="Import JSON">Import</button>
+    </div>
+  </header>
+
+  <main class="app">
+    <section class="canvas-wrap" id="canvas-wrap">
+      <svg id="links" class="links" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="nodes" class="nodes"></div>
+    </section>
+  </main>
+
+  <footer class="status" id="status"></footer>
+
+  <script src="chain.js"></script>
+</body>
+</html>

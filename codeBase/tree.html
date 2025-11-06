@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightweight Tree Builder</title>
+    <style>
+        /* --- Basic Setup & Instructions --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+        
+        .instructions {
+            background: #fff;
+            border: 1px solid #dfe6ec;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 0 auto 30px auto;
+            max-width: 600px;
+            text-align: left;
+            line-height: 1.6;
+        }
+        .instructions code {
+            background-color: #e8eaed;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        /* --- Tree Structure Styling --- */
+        .tree {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tree ul {
+            padding-top: 20px;
+            position: relative;
+            transition: all 0.5s;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tree li {
+            float: left;
+            text-align: center;
+            list-style-type: none;
+            position: relative;
+            padding: 20px 5px 0 5px;
+            transition: all 0.5s;
+        }
+
+        /* Connector lines */
+        .tree li::before, .tree li::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 50%;
+            border-top: 2px solid #ccc;
+            width: 50%;
+            height: 20px;
+        }
+        .tree li::after {
+            right: auto;
+            left: 50%;
+            border-left: 2px solid #ccc;
+        }
+        .tree li:only-child::after, .tree li:only-child::before {
+            display: none;
+        }
+        .tree li:only-child {
+            padding-top: 0;
+        }
+        .tree li:first-child::before, .tree li:last-child::after {
+            border: 0 none;
+        }
+        .tree li:last-child::before {
+            border-right: 2px solid #ccc;
+            border-radius: 0 5px 0 0;
+        }
+        .tree li:first-child::after {
+            border-radius: 5px 0 0 0;
+        }
+
+        /* Parent-to-child connector */
+        .tree ul ul::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            border-left: 2px solid #ccc;
+            width: 0;
+            height: 20px;
+        }
+
+        /* --- Node Styling --- */
+        .node {
+            border: 2px solid #3498db;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            background-color: #fff;
+            font-size: 14px;
+            display: inline-block;
+            border-radius: 8px;
+            min-width: 100px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .node:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        /* --- Modal (Pop-up) Styling --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: left;
+        }
+        
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .modal-content label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .modal-content input, .modal-content textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Important for padding */
+        }
+        
+        .modal-content textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .modal-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .modal-actions button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+        
+        .btn-save { background-color: #2ecc71; color: white; }
+        .btn-save:hover { background-color: #27ae60; }
+        
+        .btn-add { background-color: #3498db; color: white; }
+        .btn-add:hover { background-color: #2980b9; }
+
+        .btn-delete { background-color: #e74c3c; color: white; }
+        .btn-delete:hover { background-color: #c0392b; }
+        
+        .btn-close { background-color: #95a5a6; color: white; }
+        .btn-close:hover { background-color: #7f8c8d; }
+    </style>
+</head>
+<body>
+
+    <h1>Lightweight Tree Builder</h1>
+
+    <div class="instructions">
+        <strong>How to use:</strong>
+        <ul>
+            <li>Click on a node (the blue-bordered box) to edit its name, add notes, add a child, or remove it.</li>
+            <li>The <code>Root</code> node cannot be removed.</li>
+            <li>Your tree is automatically saved in your browser. Click <code>Reset Tree</code> to start over.</li>
+        </ul>
+        <button id="reset-button">Reset Tree</button>
+    </div>
+
+    <div id="tree-container" class="tree"></div>
+
+    <!-- Modal for editing nodes -->
+    <div id="node-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Edit Node</h2>
+            <label for="node-name">Name / Label:</label>
+            <input type="text" id="node-name">
+
+            <label for="node-notes">Notes (opens on click):</label>
+            <textarea id="node-notes"></textarea>
+
+            <div class="modal-actions">
+                <div>
+                    <button id="save-button" class="btn-save">Save Changes</button>
+                    <button id="close-button" class="btn-close">Close</button>
+                </div>
+                <div>
+                    <button id="add-child-button" class="btn-add">Add Child</button>
+                    <button id="remove-node-button" class="btn-delete">Remove This Node</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const treeContainer = document.getElementById('tree-container');
+            const modal = document.getElementById('node-modal');
+            const nodeNameInput = document.getElementById('node-name');
+            const nodeNotesTextarea = document.getElementById('node-notes');
+            
+            // Modal Buttons
+            const saveButton = document.getElementById('save-button');
+            const closeButton = document.getElementById('close-button');
+            const addChildButton = document.getElementById('add-child-button');
+            const removeNodeButton = document.getElementById('remove-node-button');
+            const resetButton = document.getElementById('reset-button');
+
+            // The single source of truth for our tree data
+            let treeData;
+
+            // A variable to keep track of which node is being edited
+            let currentNodeId = null;
+            
+            const defaultTree = {
+                id: 1,
+                name: 'Root',
+                notes: 'This is the starting point of your tree. Click me to edit!',
+                children: []
+            };
+
+            // --- DATA MANAGEMENT ---
+            function loadTree() {
+                const savedTree = localStorage.getItem('familyTreeData');
+                treeData = savedTree ? JSON.parse(savedTree) : defaultTree;
+                render();
+            }
+
+            function saveTree() {
+                localStorage.setItem('familyTreeData', JSON.stringify(treeData));
+            }
+            
+            resetButton.addEventListener('click', () => {
+                if (confirm('Are you sure you want to reset the entire tree? This cannot be undone.')) {
+                    localStorage.removeItem('familyTreeData');
+                    loadTree();
+                }
+            });
+
+            // --- TREE RENDERING ---
+            function render() {
+                treeContainer.innerHTML = ''; // Clear the current tree
+                const treeRoot = buildTreeHTML(treeData);
+                treeContainer.appendChild(treeRoot);
+                saveTree(); // Auto-save on every render
+            }
+
+            // Recursive function to build the HTML structure from the data object
+            function buildTreeHTML(node) {
+                const li = document.createElement('li');
+                
+                const nodeDiv = document.createElement('div');
+                nodeDiv.className = 'node';
+                nodeDiv.textContent = node.name;
+                nodeDiv.dataset.id = node.id;
+                
+                li.appendChild(nodeDiv);
+
+                if (node.children && node.children.length > 0) {
+                    const ul = document.createElement('ul');
+                    node.children.forEach(child => {
+                        ul.appendChild(buildTreeHTML(child));
+                    });
+                    li.appendChild(ul);
+                }
+                return li;
+            }
+
+            // --- NODE MANIPULATION LOGIC ---
+            
+            // Recursive function to find a node by its ID
+            function findNodeById(id, node = treeData) {
+                if (node.id === id) return node;
+                if (node.children) {
+                    for (const child of node.children) {
+                        const found = findNodeById(id, child);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            }
+
+            function findParentOfNode(childId, node = treeData) {
+                if (node.children) {
+                    for (const child of node.children) {
+                        if (child.id === childId) return node;
+                        const found = findParentOfNode(childId, child);
+                        if (found) return found;
+                    }
+                }
+                return null;
+            }
+
+            // --- MODAL AND EVENT HANDLERS ---
+            
+            // Open the modal with the correct node's data
+            function openModal(nodeId) {
+                currentNodeId = nodeId;
+                const node = findNodeById(nodeId);
+                if (!node) return;
+
+                nodeNameInput.value = node.name;
+                nodeNotesTextarea.value = node.notes;
+
+                // The root node cannot be removed
+                removeNodeButton.style.display = (node.id === 1) ? 'none' : 'inline-block';
+                
+                modal.style.display = 'flex';
+            }
+
+            function closeModal() {
+                modal.style.display = 'none';
+                currentNodeId = null;
+            }
+
+            // Event delegation for clicking on nodes
+            treeContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('node')) {
+                    const nodeId = parseInt(e.target.dataset.id);
+                    openModal(nodeId);
+                }
+            });
+            
+            saveButton.addEventListener('click', () => {
+                if (!currentNodeId) return;
+                const node = findNodeById(currentNodeId);
+                if (node) {
+                    node.name = nodeNameInput.value.trim() || 'Untitled';
+                    node.notes = nodeNotesTextarea.value;
+                    render();
+                }
+                closeModal();
+            });
+
+            addChildButton.addEventListener('click', () => {
+                if (!currentNodeId) return;
+                const parentNode = findNodeById(currentNodeId);
+                if (parentNode) {
+                    const newNodeName = prompt("Enter the name for the new child branch:", "New Branch");
+                    if (newNodeName) { // Only add if user enters a name
+                        const newNode = {
+                            id: Date.now(), // Simple unique ID
+                            name: newNodeName,
+                            notes: '',
+                            children: []
+                        };
+                        parentNode.children.push(newNode);
+                        render();
+                    }
+                }
+                closeModal();
+            });
+            
+            removeNodeButton.addEventListener('click', () => {
+                if (!currentNodeId || currentNodeId === 1) return; // Can't remove root
+                
+                if (confirm(`Are you sure you want to remove this node and all its children?`)) {
+                    const parentNode = findParentOfNode(currentNodeId);
+                    if (parentNode) {
+                        parentNode.children = parentNode.children.filter(child => child.id !== currentNodeId);
+                        render();
+                    }
+                }
+                closeModal();
+            });
+
+            closeButton.addEventListener('click', closeModal);
+
+            // Close modal if user clicks on the overlay
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+            
+            // --- INITIALIZATION ---
+            loadTree();
+        });
+    </script>
+
+</body>
+</html>
