@@ -1,0 +1,121 @@
+{
+  "nodes": {
+    "vel6z5yq": {
+      "id": "vel6z5yq",
+      "title": "AI/ML",
+      "x": 655.199951171875,
+      "y": 21.599998474121094,
+      "parentId": null,
+      "children": [
+        "mqpo9yjk",
+        "vd6iseqo"
+      ],
+      "notes": "This is a brief explaining the structure of AI in tech.",
+      "collapsed": false
+    },
+    "mqpo9yjk": {
+      "id": "mqpo9yjk",
+      "title": "Artificial Intelligence",
+      "x": 355.199951171875,
+      "y": 178.39990234375,
+      "parentId": "vel6z5yq",
+      "children": [
+        "12mer0gi"
+      ],
+      "notes": "",
+      "collapsed": false
+    },
+    "12mer0gi": {
+      "id": "12mer0gi",
+      "title": "Agentic AI",
+      "x": 650.3999938964844,
+      "y": 235.19989013671875,
+      "parentId": "mqpo9yjk",
+      "children": [
+        "dj9fll10"
+      ],
+      "notes": "",
+      "collapsed": false
+    },
+    "dj9fll10": {
+      "id": "dj9fll10",
+      "title": "MCP Servers",
+      "x": 400.7999572753906,
+      "y": 347.9999084472656,
+      "parentId": "12mer0gi",
+      "children": [
+        "4nda3pi9"
+      ],
+      "notes": "",
+      "collapsed": false
+    },
+    "4nda3pi9": {
+      "id": "4nda3pi9",
+      "title": "RAG Pipelines",
+      "x": 676.7999572753906,
+      "y": 451.9999084472656,
+      "parentId": "dj9fll10",
+      "children": [
+        "tua7862f"
+      ],
+      "notes": "",
+      "collapsed": false
+    },
+    "tua7862f": {
+      "id": "tua7862f",
+      "title": "UI/UX Design",
+      "x": 457.5999450683594,
+      "y": 571.9999084472656,
+      "parentId": "4nda3pi9",
+      "children": [],
+      "notes": "",
+      "collapsed": false
+    },
+    "vd6iseqo": {
+      "id": "vd6iseqo",
+      "title": "Machine Learning",
+      "x": 1000.7999267578125,
+      "y": 174.39997100830078,
+      "parentId": "vel6z5yq",
+      "children": [
+        "05gssr5h"
+      ],
+      "notes": "Hello world",
+      "collapsed": false
+    },
+    "05gssr5h": {
+      "id": "05gssr5h",
+      "title": "Model Fine Tuning",
+      "x": 941.5999755859375,
+      "y": 335.99991607666016,
+      "parentId": "vd6iseqo",
+      "children": [
+        "8u19uumo",
+        "7oez1vu7"
+      ],
+      "notes": "",
+      "collapsed": false
+    },
+    "8u19uumo": {
+      "id": "8u19uumo",
+      "title": "Training and Testing",
+      "x": 1075.9998779296875,
+      "y": 450.4000015258789,
+      "parentId": "05gssr5h",
+      "children": [],
+      "notes": "",
+      "collapsed": false
+    },
+    "7oez1vu7": {
+      "id": "7oez1vu7",
+      "title": "Shipping Code",
+      "x": 915.9998168945312,
+      "y": 578.4000015258789,
+      "parentId": "05gssr5h",
+      "children": [],
+      "notes": "",
+      "collapsed": false
+    }
+  },
+  "rootId": "vel6z5yq"
+}

@@ -1,0 +1,125 @@
+{
+  "nodes": {
+    "chem_root": {
+      "id": "chem_root",
+      "title": "Chemical Bonding",
+      "x": 650,
+      "y": 50,
+      "parentId": null,
+      "children": ["ionic", "covalent", "metallic"],
+      "notes": "How atoms combine to form molecules and compounds",
+      "collapsed": false
+    },
+    "ionic": {
+      "id": "ionic",
+      "title": "Ionic Bonds",
+      "x": 350,
+      "y": 180,
+      "parentId": "chem_root",
+      "children": ["electron_transfer", "ionic_examples"],
+      "notes": "Electrostatic attraction between ions",
+      "collapsed": false
+    },
+    "electron_transfer": {
+      "id": "electron_transfer",
+      "title": "Electron Transfer",
+      "x": 250,
+      "y": 310,
+      "parentId": "ionic",
+      "children": [],
+      "notes": "Metal loses electrons, non-metal gains",
+      "collapsed": false
+    },
+    "ionic_examples": {
+      "id": "ionic_examples",
+      "title": "Examples (NaCl, MgO)",
+      "x": 450,
+      "y": 310,
+      "parentId": "ionic",
+      "children": [],
+      "notes": "High melting points, conduct when molten",
+      "collapsed": false
+    },
+    "covalent": {
+      "id": "covalent",
+      "title": "Covalent Bonds",
+      "x": 650,
+      "y": 180,
+      "parentId": "chem_root",
+      "children": ["electron_sharing", "polar", "nonpolar"],
+      "notes": "Sharing of electron pairs",
+      "collapsed": false
+    },
+    "electron_sharing": {
+      "id": "electron_sharing",
+      "title": "Electron Sharing",
+      "x": 550,
+      "y": 310,
+      "parentId": "covalent",
+      "children": [],
+      "notes": "Atoms share valence electrons",
+      "collapsed": false
+    },
+    "polar": {
+      "id": "polar",
+      "title": "Polar Covalent",
+      "x": 700,
+      "y": 310,
+      "parentId": "covalent",
+      "children": ["h2o"],
+      "notes": "Unequal sharing of electrons",
+      "collapsed": false
+    },
+    "h2o": {
+      "id": "h2o",
+      "title": "Water (H₂O)",
+      "x": 700,
+      "y": 440,
+      "parentId": "polar",
+      "children": [],
+      "notes": "Partial charges, hydrogen bonding",
+      "collapsed": false
+    },
+    "nonpolar": {
+      "id": "nonpolar",
+      "title": "Nonpolar Covalent",
+      "x": 850,
+      "y": 310,
+      "parentId": "covalent",
+      "children": [],
+      "notes": "Equal sharing (O₂, N₂)",
+      "collapsed": false
+    },
+    "metallic": {
+      "id": "metallic",
+      "title": "Metallic Bonds",
+      "x": 950,
+      "y": 180,
+      "parentId": "chem_root",
+      "children": ["electron_sea", "properties"],
+      "notes": "Delocalized electrons in metal lattice",
+      "collapsed": false
+    },
+    "electron_sea": {
+      "id": "electron_sea",
+      "title": "Electron Sea Model",
+      "x": 900,
+      "y": 310,
+      "parentId": "metallic",
+      "children": [],
+      "notes": "Mobile electrons around metal cations",
+      "collapsed": false
+    },
+    "properties": {
+      "id": "properties",
+      "title": "Metallic Properties",
+      "x": 1050,
+      "y": 310,
+      "parentId": "metallic",
+      "children": [],
+      "notes": "Conductivity, malleability, luster",
+      "collapsed": false
+    }
+  },
+  "rootId": "chem_root"
+}

@@ -1,0 +1,155 @@
+{
+  "nodes": {
+    "math_root": {
+      "id": "math_root",
+      "title": "Calculus",
+      "x": 650,
+      "y": 50,
+      "parentId": null,
+      "children": ["differential", "integral"],
+      "notes": "Mathematical study of continuous change",
+      "collapsed": false
+    },
+    "differential": {
+      "id": "differential",
+      "title": "Differential Calculus",
+      "x": 400,
+      "y": 180,
+      "parentId": "math_root",
+      "children": ["derivatives", "applications_diff"],
+      "notes": "Study of rates of change and slopes",
+      "collapsed": false
+    },
+    "derivatives": {
+      "id": "derivatives",
+      "title": "Derivatives",
+      "x": 300,
+      "y": 310,
+      "parentId": "differential",
+      "children": ["power_rule", "chain_rule", "product_rule"],
+      "notes": "Instantaneous rate of change",
+      "collapsed": false
+    },
+    "power_rule": {
+      "id": "power_rule",
+      "title": "Power Rule",
+      "x": 200,
+      "y": 440,
+      "parentId": "derivatives",
+      "children": [],
+      "notes": "d/dx(xⁿ) = nxⁿ⁻¹",
+      "collapsed": false
+    },
+    "chain_rule": {
+      "id": "chain_rule",
+      "title": "Chain Rule",
+      "x": 300,
+      "y": 440,
+      "parentId": "derivatives",
+      "children": [],
+      "notes": "d/dx[f(g(x))] = f'(g(x))·g'(x)",
+      "collapsed": false
+    },
+    "product_rule": {
+      "id": "product_rule",
+      "title": "Product Rule",
+      "x": 400,
+      "y": 440,
+      "parentId": "derivatives",
+      "children": [],
+      "notes": "d/dx[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)",
+      "collapsed": false
+    },
+    "applications_diff": {
+      "id": "applications_diff",
+      "title": "Applications",
+      "x": 500,
+      "y": 310,
+      "parentId": "differential",
+      "children": ["optimization", "tangent_lines"],
+      "notes": "Real-world uses of derivatives",
+      "collapsed": false
+    },
+    "optimization": {
+      "id": "optimization",
+      "title": "Optimization",
+      "x": 450,
+      "y": 440,
+      "parentId": "applications_diff",
+      "children": [],
+      "notes": "Finding maximum and minimum values",
+      "collapsed": false
+    },
+    "tangent_lines": {
+      "id": "tangent_lines",
+      "title": "Tangent Lines",
+      "x": 550,
+      "y": 440,
+      "parentId": "applications_diff",
+      "children": [],
+      "notes": "Linear approximation of curves",
+      "collapsed": false
+    },
+    "integral": {
+      "id": "integral",
+      "title": "Integral Calculus",
+      "x": 900,
+      "y": 180,
+      "parentId": "math_root",
+      "children": ["indefinite", "definite"],
+      "notes": "Study of accumulation and areas",
+      "collapsed": false
+    },
+    "indefinite": {
+      "id": "indefinite",
+      "title": "Indefinite Integrals",
+      "x": 800,
+      "y": 310,
+      "parentId": "integral",
+      "children": ["antiderivatives"],
+      "notes": "General form with constant C",
+      "collapsed": false
+    },
+    "antiderivatives": {
+      "id": "antiderivatives",
+      "title": "Antiderivatives",
+      "x": 800,
+      "y": 440,
+      "parentId": "indefinite",
+      "children": [],
+      "notes": "Reverse process of differentiation",
+      "collapsed": false
+    },
+    "definite": {
+      "id": "definite",
+      "title": "Definite Integrals",
+      "x": 1000,
+      "y": 310,
+      "parentId": "integral",
+      "children": ["ftc", "area_calculation"],
+      "notes": "Integration over specific interval",
+      "collapsed": false
+    },
+    "ftc": {
+      "id": "ftc",
+      "title": "Fundamental Theorem",
+      "x": 950,
+      "y": 440,
+      "parentId": "definite",
+      "children": [],
+      "notes": "Links differentiation and integration",
+      "collapsed": false
+    },
+    "area_calculation": {
+      "id": "area_calculation",
+      "title": "Area Under Curves",
+      "x": 1100,
+      "y": 440,
+      "parentId": "definite",
+      "children": [],
+      "notes": "Calculate regions bounded by functions",
+      "collapsed": false
+    }
+  },
+  "rootId": "math_root"
+}

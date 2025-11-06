@@ -1,0 +1,175 @@
+{
+  "nodes": {
+    "phys_root": {
+      "id": "phys_root",
+      "title": "Classical Mechanics",
+      "x": 650,
+      "y": 50,
+      "parentId": null,
+      "children": ["kinematics", "dynamics", "energy"],
+      "notes": "Study of motion and forces in macroscopic systems",
+      "collapsed": false
+    },
+    "kinematics": {
+      "id": "kinematics",
+      "title": "Kinematics",
+      "x": 350,
+      "y": 180,
+      "parentId": "phys_root",
+      "children": ["motion_1d", "motion_2d"],
+      "notes": "Description of motion without considering forces",
+      "collapsed": false
+    },
+    "motion_1d": {
+      "id": "motion_1d",
+      "title": "1D Motion",
+      "x": 250,
+      "y": 310,
+      "parentId": "kinematics",
+      "children": ["velocity", "acceleration"],
+      "notes": "Motion along a straight line",
+      "collapsed": false
+    },
+    "velocity": {
+      "id": "velocity",
+      "title": "Velocity",
+      "x": 200,
+      "y": 440,
+      "parentId": "motion_1d",
+      "children": [],
+      "notes": "v = Δx/Δt (displacement over time)",
+      "collapsed": false
+    },
+    "acceleration": {
+      "id": "acceleration",
+      "title": "Acceleration",
+      "x": 300,
+      "y": 440,
+      "parentId": "motion_1d",
+      "children": [],
+      "notes": "a = Δv/Δt (change in velocity)",
+      "collapsed": false
+    },
+    "motion_2d": {
+      "id": "motion_2d",
+      "title": "2D Motion",
+      "x": 450,
+      "y": 310,
+      "parentId": "kinematics",
+      "children": ["projectile"],
+      "notes": "Motion in a plane",
+      "collapsed": false
+    },
+    "projectile": {
+      "id": "projectile",
+      "title": "Projectile Motion",
+      "x": 450,
+      "y": 440,
+      "parentId": "motion_2d",
+      "children": [],
+      "notes": "Parabolic trajectory under gravity",
+      "collapsed": false
+    },
+    "dynamics": {
+      "id": "dynamics",
+      "title": "Dynamics",
+      "x": 650,
+      "y": 180,
+      "parentId": "phys_root",
+      "children": ["newton_laws", "friction"],
+      "notes": "Study of forces and their effects on motion",
+      "collapsed": false
+    },
+    "newton_laws": {
+      "id": "newton_laws",
+      "title": "Newton's Laws",
+      "x": 600,
+      "y": 310,
+      "parentId": "dynamics",
+      "children": ["first_law", "second_law", "third_law"],
+      "notes": "Three fundamental laws of motion",
+      "collapsed": false
+    },
+    "first_law": {
+      "id": "first_law",
+      "title": "First Law (Inertia)",
+      "x": 500,
+      "y": 440,
+      "parentId": "newton_laws",
+      "children": [],
+      "notes": "Object at rest stays at rest unless acted upon",
+      "collapsed": false
+    },
+    "second_law": {
+      "id": "second_law",
+      "title": "Second Law",
+      "x": 600,
+      "y": 440,
+      "parentId": "newton_laws",
+      "children": [],
+      "notes": "F = ma (Force equals mass times acceleration)",
+      "collapsed": false
+    },
+    "third_law": {
+      "id": "third_law",
+      "title": "Third Law",
+      "x": 700,
+      "y": 440,
+      "parentId": "newton_laws",
+      "children": [],
+      "notes": "Every action has equal and opposite reaction",
+      "collapsed": false
+    },
+    "friction": {
+      "id": "friction",
+      "title": "Friction",
+      "x": 750,
+      "y": 310,
+      "parentId": "dynamics",
+      "children": [],
+      "notes": "Resistance force between surfaces",
+      "collapsed": false
+    },
+    "energy": {
+      "id": "energy",
+      "title": "Energy & Work",
+      "x": 950,
+      "y": 180,
+      "parentId": "phys_root",
+      "children": ["kinetic", "potential", "conservation"],
+      "notes": "Energy transformations and conservation",
+      "collapsed": false
+    },
+    "kinetic": {
+      "id": "kinetic",
+      "title": "Kinetic Energy",
+      "x": 850,
+      "y": 310,
+      "parentId": "energy",
+      "children": [],
+      "notes": "KE = ½mv² (energy of motion)",
+      "collapsed": false
+    },
+    "potential": {
+      "id": "potential",
+      "title": "Potential Energy",
+      "x": 950,
+      "y": 310,
+      "parentId": "energy",
+      "children": [],
+      "notes": "PE = mgh (stored energy)",
+      "collapsed": false
+    },
+    "conservation": {
+      "id": "conservation",
+      "title": "Conservation of Energy",
+      "x": 1100,
+      "y": 310,
+      "parentId": "energy",
+      "children": [],
+      "notes": "Total energy in closed system remains constant",
+      "collapsed": false
+    }
+  },
+  "rootId": "phys_root"
+}

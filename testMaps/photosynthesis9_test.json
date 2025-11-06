@@ -1,0 +1,175 @@
+{
+  "nodes": {
+    "photosynthesis": {
+      "id": "photosynthesis",
+      "title": "Photosynthesis",
+      "x": 650,
+      "y": 50,
+      "parentId": null,
+      "children": ["light_reaction", "dark_reaction"],
+      "notes": "Process by which plants convert light energy into chemical energy.",
+      "collapsed": false
+    },
+    "light_reaction": {
+      "id": "light_reaction",
+      "title": "Light Reaction",
+      "x": 500,
+      "y": 200,
+      "parentId": "photosynthesis",
+      "children": ["chlorophyll", "thylakoid", "electron_transport_chain", "ATP_NADPH"],
+      "notes": "Occurs in thylakoid membranes; captures light energy.",
+      "collapsed": false
+    },
+    "dark_reaction": {
+      "id": "dark_reaction",
+      "title": "Dark Reaction (Calvin Cycle)",
+      "x": 800,
+      "y": 200,
+      "parentId": "photosynthesis",
+      "children": ["CO2_fixation", "RuBisCO", "G3P"],
+      "notes": "Uses ATP and NADPH to fix CO₂ into sugars.",
+      "collapsed": false
+    },
+    "chlorophyll": {
+      "id": "chlorophyll",
+      "title": "Chlorophyll",
+      "x": 400,
+      "y": 350,
+      "parentId": "light_reaction",
+      "children": ["chlorophyll_a", "chlorophyll_b"],
+      "notes": "Pigment that absorbs light.",
+      "collapsed": false
+    },
+    "thylakoid": {
+      "id": "thylakoid",
+      "title": "Thylakoid",
+      "x": 500,
+      "y": 350,
+      "parentId": "light_reaction",
+      "children": ["grana"],
+      "notes": "Membrane where light reactions occur.",
+      "collapsed": false
+    },
+    "electron_transport_chain": {
+      "id": "electron_transport_chain",
+      "title": "Electron Transport Chain",
+      "x": 600,
+      "y": 350,
+      "parentId": "light_reaction",
+      "children": ["photosystem_II", "photosystem_I"],
+      "notes": "Transfers electrons to generate ATP and NADPH.",
+      "collapsed": false
+    },
+    "ATP_NADPH": {
+      "id": "ATP_NADPH",
+      "title": "ATP & NADPH Production",
+      "x": 700,
+      "y": 350,
+      "parentId": "light_reaction",
+      "children": ["ATP", "NADPH"],
+      "notes": "Energy carriers produced in light reaction.",
+      "collapsed": false
+    },
+    "CO2_fixation": {
+      "id": "CO2_fixation",
+      "title": "CO₂ Fixation",
+      "x": 650,
+      "y": 350,
+      "parentId": "dark_reaction",
+      "children": [],
+      "notes": "CO₂ incorporated into organic molecules.",
+      "collapsed": false
+    },
+    "RuBisCO": {
+      "id": "RuBisCO",
+      "title": "RuBisCO",
+      "x": 750,
+      "y": 350,
+      "parentId": "dark_reaction",
+      "children": [],
+      "notes": "Enzyme that catalyzes CO₂ fixation.",
+      "collapsed": false
+    },
+    "G3P": {
+      "id": "G3P",
+      "title": "Glyceraldehyde-3-Phosphate",
+      "x": 850,
+      "y": 350,
+      "parentId": "dark_reaction",
+      "children": [],
+      "notes": "Three-carbon sugar produced in Calvin cycle.",
+      "collapsed": false
+    },
+    "chlorophyll_a": {
+      "id": "chlorophyll_a",
+      "title": "Chlorophyll a",
+      "x": 350,
+      "y": 500,
+      "parentId": "chlorophyll",
+      "children": [],
+      "notes": "Primary pigment in photosystems.",
+      "collapsed": false
+    },
+    "chlorophyll_b": {
+      "id": "chlorophyll_b",
+      "title": "Chlorophyll b",
+      "x": 450,
+      "y": 500,
+      "parentId": "chlorophyll",
+      "children": [],
+      "notes": "Accessory pigment that expands light absorption.",
+      "collapsed": false
+    },
+    "grana": {
+      "id": "grana",
+      "title": "Grana",
+      "x": 500,
+      "y": 500,
+      "parentId": "thylakoid",
+      "children": [],
+      "notes": "Stacks of thylakoid membranes.",
+      "collapsed": false
+    },
+    "photosystem_II": {
+      "id": "photosystem_II",
+      "title": "Photosystem II",
+      "x": 550,
+      "y": 500,
+      "parentId": "electron_transport_chain",
+      "children": [],
+      "notes": "First complex that absorbs light and splits water.",
+      "collapsed": false
+    },
+    "photosystem_I": {
+      "id": "photosystem_I",
+      "title": "Photosystem I",
+      "x": 650,
+      "y": 500,
+      "parentId": "electron_transport_chain",
+      "children": [],
+      "notes": "Second complex that produces NADPH.",
+      "collapsed": false
+    },
+    "ATP": {
+      "id": "ATP",
+      "title": "ATP",
+      "x": 700,
+      "y": 500,
+      "parentId": "ATP_NADPH",
+      "children": [],
+      "notes": "Energy currency of the cell.",
+      "collapsed": false
+    },
+    "NADPH": {
+      "id": "NADPH",
+      "title": "NADPH",
+      "x": 800,
+      "y": 500,
+      "parentId": "ATP_NADPH",
+      "children": [],
+      "notes": "Reductant used in Calvin cycle.",
+      "collapsed": false
+    }
+  },
+  "rootId": "photosynthesis"
+}

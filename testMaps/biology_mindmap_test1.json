@@ -1,0 +1,125 @@
+{
+  "nodes": {
+    "bio_root": {
+      "id": "bio_root",
+      "title": "Cell Biology",
+      "x": 650,
+      "y": 50,
+      "parentId": null,
+      "children": ["prokaryote", "eukaryote"],
+      "notes": "Study of cellular structures and functions",
+      "collapsed": false
+    },
+    "prokaryote": {
+      "id": "prokaryote",
+      "title": "Prokaryotic Cells",
+      "x": 400,
+      "y": 180,
+      "parentId": "bio_root",
+      "children": ["bacteria", "archaea"],
+      "notes": "Cells without membrane-bound nucleus",
+      "collapsed": false
+    },
+    "bacteria": {
+      "id": "bacteria",
+      "title": "Bacteria",
+      "x": 300,
+      "y": 310,
+      "parentId": "prokaryote",
+      "children": ["cell_wall"],
+      "notes": "Single-celled microorganisms",
+      "collapsed": false
+    },
+    "archaea": {
+      "id": "archaea",
+      "title": "Archaea",
+      "x": 500,
+      "y": 310,
+      "parentId": "prokaryote",
+      "children": [],
+      "notes": "Extremophile organisms",
+      "collapsed": false
+    },
+    "cell_wall": {
+      "id": "cell_wall",
+      "title": "Cell Wall (Peptidoglycan)",
+      "x": 300,
+      "y": 440,
+      "parentId": "bacteria",
+      "children": [],
+      "notes": "Structural protection layer",
+      "collapsed": false
+    },
+    "eukaryote": {
+      "id": "eukaryote",
+      "title": "Eukaryotic Cells",
+      "x": 900,
+      "y": 180,
+      "parentId": "bio_root",
+      "children": ["nucleus", "organelles"],
+      "notes": "Cells with membrane-bound nucleus",
+      "collapsed": false
+    },
+    "nucleus": {
+      "id": "nucleus",
+      "title": "Nucleus",
+      "x": 800,
+      "y": 310,
+      "parentId": "eukaryote",
+      "children": ["dna_storage"],
+      "notes": "Contains genetic material",
+      "collapsed": false
+    },
+    "dna_storage": {
+      "id": "dna_storage",
+      "title": "DNA & Chromatin",
+      "x": 800,
+      "y": 440,
+      "parentId": "nucleus",
+      "children": [],
+      "notes": "Genetic information storage",
+      "collapsed": false
+    },
+    "organelles": {
+      "id": "organelles",
+      "title": "Organelles",
+      "x": 1000,
+      "y": 310,
+      "parentId": "eukaryote",
+      "children": ["mitochondria", "chloroplast", "er"],
+      "notes": "Specialized cellular structures",
+      "collapsed": false
+    },
+    "mitochondria": {
+      "id": "mitochondria",
+      "title": "Mitochondria",
+      "x": 900,
+      "y": 440,
+      "parentId": "organelles",
+      "children": [],
+      "notes": "Powerhouse of the cell - ATP production",
+      "collapsed": false
+    },
+    "chloroplast": {
+      "id": "chloroplast",
+      "title": "Chloroplast",
+      "x": 1000,
+      "y": 440,
+      "parentId": "organelles",
+      "children": [],
+      "notes": "Photosynthesis in plant cells",
+      "collapsed": false
+    },
+    "er": {
+      "id": "er",
+      "title": "Endoplasmic Reticulum",
+      "x": 1100,
+      "y": 440,
+      "parentId": "organelles",
+      "children": [],
+      "notes": "Protein and lipid synthesis",
+      "collapsed": false
+    }
+  },
+  "rootId": "bio_root"
+}
